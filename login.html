@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đăng nhập</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+   <div id="wrapper" style="padding-bottom: 4rem;">
+        <header>
+            <div class="container">
+                <section class="logo">
+                    <a href="../index.php"><img src="../images/logo-grabfood.svg" alt=""></a>
+                </section>
+                <nav>
+                    <ul>
+                        <li><a href="../index.php">Trang chủ</a></li>
+                        <li class="nav-cha">
+                            <a href="../thucdon.php?page=thucdon">Gậy Bida</a>
+                            <ul class="nav-con">
+                              
+                            </ul>
+                        </li>
+                        <li><a href="../about.php">Về chúng tôi</a></li>
+                        <li><a href="../sendMail.php">Liên hệ</a></li>
+                    </ul>
+                </nav>
+                <section class="menu-right">
+                    <div class="cart">
+                        <a href="../cart.php"><img src="../images/icon/cart.svg" alt=""></a>
+                       
+                    </div>
+                    <div class="login">
+                      if{
+                            <div class="logout">
+                                <a href="changePass.php"><i class="fas fa-exchange-alt"></i>Đổi mật khẩu</a> <br>
+                                <a href="logout.php"><i class="fas fa-sign-out-alt"></i>Đăng xuất</a>
+                            </div>
+                   
+                        } else {
+                            echo '<a href="login.php">Đăng nhập</a>';
+                        }
+
+                        ?>
+
+
+                    </div>
+                </section>
+            </div>
+        </header>
+        <div class="container">
+            <form action="login.php" method="POST">
+                <h1 style="text-align: center;">Đăng nhập hệ thống</h1>
+                <div class="form-group">
+                    <label for="">Tài khoản:</label>
+                    <input type="text" name="username" class="form-control" placeholder="Tài khoản">
+                </div>
+                <div class="form-group">
+                    <label for="">Mật khẩu:</label>
+                    <input type="password" name="password" class="form-control" placeholder="Mật khẩu">
+                </div>
+                <a href="forget.php">Quên mật khẩu</a>
+                <div style="padding-top: 5px;" class="form-group">
+                    <input type="submit" name="submit" class="btn btn-primary" value="Đăng nhập">
+                    <p style="padding-top: 1rem;">Bạn chưa có tài khoản? <a href="reg.php">Đăng ký</a></p>
+                </div>
+            </form>
+        </div>
+    </div>
+   
+        if{
+            echo '<script language="javascript">
+                alert("Đăng nhập Admin thành công!"); 
+                window.location = "../admin/index.php";
+            </script>';
+        
+        } else if (mysqli_num_rows($user) > 0) {
+            echo '<script language="javascript">
+                alert("Đăng nhập thành công!"); 
+                window.location = "../index.php";
+            </script>';
+          
+            
+        } else {
+            echo '<script language="javascript">
+                alert("Tài khoản và mật khẩu không chính xác !");
+                window.location = "login.php";
+             </script>';
+        }
+   
+    ?>
+</body>
+</html>
